@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="title_activity_main">Challenge Accepted</string>
+    <string name="action_settings">title</string>
     <string name="app_name" translatable="false">Challenge Accepted</string>
     <string name="new_challenge">New Challenge</string>
     <string name="my_challenges">My Challenges</string>
