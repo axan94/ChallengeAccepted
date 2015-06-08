@@ -6,4 +6,16 @@
     <string name="new_challenge" >New Challenge</string>
     <string name="my_challenges">My Challenges</string>
     <string name="quit">Quit</string>
+    <string name="welcome">Welcome to Challenge Accepted!</string>
+    <string name="new_challenge_head">New Challenge</string>
+    <string name="exercise">Exercise</string>
+    <string name="repetitions">Repetitions</string>
+    <string name="sets">Sets</string>
+    <string name="training_time">Training Time</string>
+    <string name="name_challenge">Name your Challenge</string>
+    <string name="next_exercise">next Exercise</string>
+    <string name="save_challenge">Save Challenge</string>
+    <string name="confirm_challenge">Confirm Challenge</string>
+    <string name="confirm">Confirm</string>
+    <string name="drop_challenge">Drop</string>
 </resources>
