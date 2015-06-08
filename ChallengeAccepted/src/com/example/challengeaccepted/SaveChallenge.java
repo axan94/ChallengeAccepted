@@ -45,7 +45,7 @@ public class SaveChallenge extends ListActivity {
 
 		datasource = new DatabaseHandler(this);
 
-		List<Workout> values = datasource.getAllWorkouts();
+		List<Workout> values = datasource.getAllWorkouts(id);
 
 		// use the SimpleCursorAdapter to show the
 		// elements in a ListView

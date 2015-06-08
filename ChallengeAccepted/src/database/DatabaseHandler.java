@@ -119,6 +119,31 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		    return l;
 	 }
 	 
+	 public List<Workout> getAllWorkouts(int ref) {
+		    List<Workout> l = new ArrayList<Workout>();
+		    // Select All Query
+		    String selectQuery = "SELECT  * FROM " + TABLE2;
+		 
+		    SQLiteDatabase db = this.getWritableDatabase();
+		    Cursor cursor = db.rawQuery(selectQuery, null);
+		 
+		    // looping through all rows and adding to list
+		    if (cursor.moveToFirst()) {
+		        do {
+		        	Workout w = new Workout();
+		            w.setId(Integer.parseInt(cursor.getString(0)));
+		            w.setRef(cursor.getString(1));
+		            w.setTask(cursor.getString(2));
+		            w.setRepeats(Integer.parseInt(cursor.getString(3)));
+		            w.setSets(Integer.parseInt(cursor.getString(4)));
+		            if(Integer.parseInt(w.getRef()) == ref)
+		            	l.add(w);
+		        } while (cursor.moveToNext());
+		    }
+		 
+		    return l;
+	 }
+	 
 	 public int updateWorkout(Workout w) {
 		    SQLiteDatabase db = this.getWritableDatabase();
 		 
@@ -195,7 +220,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 	 
 	 public int updateWorkoutPlan(WorkoutPlan wp) {
 		    SQLiteDatabase db = this.getWritableDatabase();
-		 
+		    System.out.println("UPDATE " + wp.getName() + " " + wp.getTime());
 		    ContentValues values = new ContentValues();
 		    values.put(KEY_NAME, wp.getName());
 		    values.put(KEY_TIME, wp.getTime()); 

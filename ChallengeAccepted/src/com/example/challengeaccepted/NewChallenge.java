@@ -24,7 +24,6 @@ public class NewChallenge extends Activity {
 	private EditText txt1;
 	private EditText txt2;
 	private EditText txt3;
-	private EditText txt4;
 	private DatabaseHandler datasource;
 	private List<Workout> list;
 	private WorkoutPlan wp;
@@ -38,7 +37,6 @@ public class NewChallenge extends Activity {
 		txt1 = (EditText) findViewById(R.id.editText1);
 		txt2 = (EditText) findViewById(R.id.editText2);
 		txt3 = (EditText) findViewById(R.id.editText3);
-		txt4 = (EditText) findViewById(R.id.editText4);
 
 		datasource = new DatabaseHandler(this);
 		list = new ArrayList<Workout>();
@@ -57,7 +55,6 @@ public class NewChallenge extends Activity {
 		txt1.setText("");
 		txt2.setText("");
 		txt3.setText("");
-		txt4.setText("");
 	}
 
 	public void save(View v) {
@@ -66,7 +63,9 @@ public class NewChallenge extends Activity {
 		wp = new WorkoutPlan();
 		datasource.addWorkoutPlan(wp);
 		int i = datasource.getAllWorkoutPlans().size();
-		id = datasource.getWorkoutPlan(i).getId();
+		id = i-1;
+		System.out.println(" asdasd " + i + " " + id);
+		wp.setId(id);
 		for (Workout w : list) {
 			w.setRef("" + id);
 			datasource.addWorkout(w);
@@ -85,7 +84,8 @@ public class NewChallenge extends Activity {
 			public void onClick(DialogInterface dialog, int whichButton) {
 
 				wp.setName(input.getText().toString());
-				datasource.updateWorkoutPlan(wp);
+				int test = datasource.updateWorkoutPlan(wp);
+				System.out.println(" TEST " + test);
 				Intent intent = new Intent(NewChallenge.this,
 						SaveChallenge.class);
 				intent.putExtra("workoutplan", id);
