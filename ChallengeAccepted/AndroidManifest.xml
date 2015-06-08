@@ -22,7 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+		<activity android:name="com.example.challengeaccepted.MyChallenges"></activity>
+		<activity android:name="com.example.challengeaccepted.NewChallenge"></activity>
+		<activity android:name="com.example.challengeaccepted.SaveChallenge"></activity>
+		
         <service android:name="services.ScheduleService" />
         <service android:name="services.NotifyService" />
     </application>

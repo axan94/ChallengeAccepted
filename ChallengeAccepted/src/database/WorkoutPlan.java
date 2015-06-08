@@ -10,13 +10,13 @@ package database;
 public class WorkoutPlan {
 	private int id;
 	private String name;
+	private String time;
 	
 	public WorkoutPlan(){
 		
 	}
 	
-	public WorkoutPlan(int id, String name){
-		this.id = id;
+	public WorkoutPlan(String name){
 		this.name = name;
 	}
 
@@ -38,5 +38,17 @@ public class WorkoutPlan {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
 	
+	@Override
+	public String toString() {
+		return "WorkoutPlan [name=" + name + ", time=" + time + "]";
+	}
 }

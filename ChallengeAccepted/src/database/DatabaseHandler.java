@@ -32,6 +32,8 @@ public class DatabaseHandler extends SQLiteOpenHelper{
     private static final String KEY_REF = "challenge";  
     private static final String KEY_TASK = "task";
     private static final String KEY_REPEATS = "repeats";
+    private static final String KEY_SETS = "sets";
+    private static final String KEY_TIME = "time";
 	
 	public DatabaseHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -41,13 +43,14 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 	public void onCreate(SQLiteDatabase db) {
 		//Table 1 autoincrement
         String CREATE_WORKOUTPLANER_TABLE = "CREATE TABLE " + TABLE + "("
-                + KEY_ID + " INTEGER PRIMARY KEY autoincrement," + KEY_NAME + " TEXT)";
+                + KEY_ID + " INTEGER PRIMARY KEY autoincrement," + KEY_NAME + " TEXT," +  KEY_TIME + " TEXT)";
         db.execSQL(CREATE_WORKOUTPLANER_TABLE);
 		
         //Table 2
         String CREATE_WORKOUT_TABLE = "CREATE TABLE " + TABLE2 + "("
                 + KEY_ID2 + " INTEGER PRIMARY KEY autoincrement," + KEY_REF + " TEXT,"
-                + KEY_TASK + " TEXT," + KEY_REPEATS + " TEXT" 
+                + KEY_TASK + " TEXT," + KEY_REPEATS + " TEXT," 
+                 + KEY_SETS + " TEXT,"  
                 + " FOREIGN KEY (" + KEY_REF + ") REFERENCES " + TABLE + " ("+ KEY_ID +"));";
         db.execSQL(CREATE_WORKOUT_TABLE);
         
@@ -70,6 +73,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 	    values.put(KEY_REF, w.getRef()); 
 	    values.put(KEY_TASK, w.getTask()); 
 	    values.put(KEY_REPEATS, w.getRepeats()); 
+	    values.put(KEY_SETS, w.getSets()); 
 	 
 	    // Inserting Row
 	    db.insert(TABLE2, null, values);
@@ -80,13 +84,14 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 	    SQLiteDatabase db = this.getReadableDatabase();
 	    
 	    Cursor cursor = db.query(TABLE2, new String[] { KEY_ID,
-	    		KEY_REF, KEY_TASK, KEY_REPEATS }, KEY_ID + "=?",
+	    		KEY_REF, KEY_TASK, KEY_REPEATS, KEY_SETS }, KEY_ID + "=?",
 	            new String[] { String.valueOf(id) }, null, null, null, null);
 	    if (cursor != null)
 	        cursor.moveToFirst();
-	 
-	    Workout w = new Workout(Integer.parseInt(cursor.getString(0)),
-	            cursor.getString(1), cursor.getString(2), Integer.parseInt(cursor.getString(3)));
+//	    (int repeats, String task,
+//				int sets, String time)
+	    Workout w = new Workout(
+	    		 Integer.parseInt(cursor.getString(3)),cursor.getString(2), Integer.parseInt(cursor.getString(4)));
 	    return w;
 	}
 	
@@ -106,6 +111,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		            w.setRef(cursor.getString(1));
 		            w.setTask(cursor.getString(2));
 		            w.setRepeats(Integer.parseInt(cursor.getString(3)));
+		            w.setSets(Integer.parseInt(cursor.getString(4)));
 		            l.add(w);
 		        } while (cursor.moveToNext());
 		    }
@@ -119,7 +125,8 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		    ContentValues values = new ContentValues();
 		    values.put(KEY_REF, w.getRef());
 		    values.put(KEY_TASK, w.getTask());
-		    values.put(KEY_REPEATS, w.getRepeats());
+		    values.put(KEY_REPEATS, w.getRepeats()); 
+		    values.put(KEY_SETS, w.getSets()); 
 		 
 		    // updating row
 		    return db.update(TABLE2, values, KEY_ID + " = ?",
@@ -143,23 +150,24 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 	    
 	    ContentValues values = new ContentValues();
 	    values.put(KEY_NAME, wp.getName()); 
+	    values.put(KEY_TIME, wp.getTime()); 
 	 
 	    // Inserting Row
 	    db.insert(TABLE, null, values);
 	    db.close(); // Closing database connection
 	}
 	
-	public Workout getWorkoutPlan(int id){
+	public WorkoutPlan getWorkoutPlan(int id){
 	    SQLiteDatabase db = this.getReadableDatabase();
 	    
 	    Cursor cursor = db.query(TABLE, new String[] { KEY_ID,
-	    		KEY_NAME }, KEY_ID + "=?",
+	    		KEY_NAME, KEY_TIME }, KEY_ID + "=?",
 	            new String[] { String.valueOf(id) }, null, null, null, null);
 	    if (cursor != null)
 	        cursor.moveToFirst();
 	 
-	    Workout w = new Workout(Integer.parseInt(cursor.getString(0)),
-	            cursor.getString(1), cursor.getString(2), Integer.parseInt(cursor.getString(3)));
+	    WorkoutPlan w = new WorkoutPlan(
+	            cursor.getString(1));
 	    return w;
 	}
 	
@@ -177,6 +185,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		        	WorkoutPlan w = new WorkoutPlan();
 		            w.setId(Integer.parseInt(cursor.getString(0)));
 		            w.setName(cursor.getString(1));
+		            //w.setTime(cursor.getString(2));
 		            l.add(w);
 		        } while (cursor.moveToNext());
 		    }
@@ -189,7 +198,8 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 		 
 		    ContentValues values = new ContentValues();
 		    values.put(KEY_NAME, wp.getName());
-		 
+		    values.put(KEY_TIME, wp.getTime()); 
+		    
 		    // updating row
 		    return db.update(TABLE, values, KEY_ID + " = ?",
 		            new String[] { String.valueOf(wp.getId()) });

@@ -98,13 +98,15 @@
                 android:id="@+id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/next_exercise" />
+                android:text="@string/next_exercise" 
+                android:onClick="nextExercise"/>
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/save_challenge" />
+                android:text="@string/save_challenge" 
+                android:onClick="save"/>
 
         </TableLayout>
 

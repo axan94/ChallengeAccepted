@@ -16,14 +16,14 @@
             android:text="@string/my_challenges"
             android:id="@+id/myChallenges" android:layout_below="@+id/welcomeText" android:layout_centerHorizontal="true"
             android:layout_marginTop="75dp"
-            android:onClick="onDateSelectedButtonClick"/>
+            android:onClick="myChallengeButton"/>
     <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/new_challenge"
             android:id="@+id/newChallenge" android:layout_centerHorizontal="true" android:layout_below="@+id/myChallenges"
             android:layout_marginTop="75dp"
-            android:onClick=""/>
+            android:onClick="newChallenge"/>
     <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"

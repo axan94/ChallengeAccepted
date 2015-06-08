@@ -17,7 +17,7 @@
         android:textSize="30sp" />
 
     <ListView
-        android:id="@+id/listView1"
+        android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
@@ -32,7 +32,8 @@
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="40dp"
-        android:text="@string/confirm" />
+        android:text="@string/confirm" 
+        android:onClick="getTime"/>
 
     <Button
         android:id="@+id/button2"
@@ -42,6 +43,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="20dp"
         android:layout_marginRight="40dp"
-        android:text="@string/drop_challenge" />
+        android:text="@string/drop_challenge" 
+        android:onClick="drop"/>
 
 </RelativeLayout>
