@@ -79,6 +79,8 @@ public class SaveChallenge extends ListActivity {
 				datasource.deleteWorkout(w);
 			}
 		}
+		Intent intent = new Intent(SaveChallenge.this, MainActivity.class);
+		SaveChallenge.this.startActivity(intent);
 		
 	}
 
@@ -86,8 +88,8 @@ public class SaveChallenge extends ListActivity {
 //		do {
 			AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-			alert.setTitle("Title");
-			alert.setMessage("Message");
+			alert.setTitle("When do you wanna train?");
+			alert.setMessage("Timeformat (hh:mm)");
 
 			// Set an EditText view to get user input
 			final EditText input = new EditText(this);
@@ -104,6 +106,13 @@ public class SaveChallenge extends ListActivity {
 								d1 = f.parse(input.getText().toString());
 								startingService(d1.getHours(), d1.getMinutes());
 								saving = true;
+								
+								WorkoutPlan plan = datasource.getWorkoutPlan(id);
+								plan.setId(id);
+								plan.setTime(input.getText().toString());
+								int lol = datasource.updateWorkoutPlan(plan);
+								System.out.println("PLAN " + plan.getId());
+								System.out.println(" ID " + id + " " + lol);
 								Intent intent = new Intent(SaveChallenge.this, MainActivity.class);
 								SaveChallenge.this.startActivity(intent);
 							} catch (ParseException e) {

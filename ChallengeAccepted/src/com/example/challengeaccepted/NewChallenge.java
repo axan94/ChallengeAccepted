@@ -63,7 +63,8 @@ public class NewChallenge extends Activity {
 		wp = new WorkoutPlan();
 		datasource.addWorkoutPlan(wp);
 		int i = datasource.getAllWorkoutPlans().size();
-		id = i-1;
+		
+		id = datasource.getAllWorkoutPlans().get(i-1).getId();
 		System.out.println(" asdasd " + i + " " + id);
 		wp.setId(id);
 		for (Workout w : list) {
@@ -73,8 +74,8 @@ public class NewChallenge extends Activity {
 
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-		alert.setTitle("Title");
-		alert.setMessage("Message");
+		alert.setTitle("Please name your Challenge");
+		alert.setMessage("Name:");
 
 		// Set an EditText view to get user input
 		final EditText input = new EditText(this);

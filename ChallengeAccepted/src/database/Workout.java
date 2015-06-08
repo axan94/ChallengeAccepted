@@ -61,7 +61,6 @@ public class Workout {
 
 	@Override
 	public String toString() {
-		return "Workout [id=" + id + ", ref=" + ref + ", task=" + task
-				+ ", repeats=" + repeats + ", sets=" + sets + "]";
+		return "Workout: task=" + task+ ", repeats=" + repeats + ", sets=" + sets;
 	}
 }

@@ -25,6 +25,7 @@
 		<activity android:name="com.example.challengeaccepted.MyChallenges"></activity>
 		<activity android:name="com.example.challengeaccepted.NewChallenge"></activity>
 		<activity android:name="com.example.challengeaccepted.SaveChallenge"></activity>
+		<activity android:name="com.example.challengeaccepted.WorkSub"></activity>
 		
         <service android:name="services.ScheduleService" />
         <service android:name="services.NotifyService" />

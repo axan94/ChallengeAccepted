@@ -49,7 +49,6 @@ public class WorkoutPlan {
 	
 	@Override
 	public String toString() {
-		return "WorkoutPlan [id=" + id + ", name=" + name + ", time=" + time
-				+ "]";
+		return "WorkoutPlan: name=" + name;
 	}
 }

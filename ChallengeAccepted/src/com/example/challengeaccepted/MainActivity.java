@@ -35,6 +35,12 @@ public class MainActivity extends ActionBarActivity {
 		
 	}
 	
+	public void quitting(View v){
+		Intent intent = new Intent(Intent.ACTION_MAIN);
+	    intent.addCategory(Intent.CATEGORY_HOME);
+	    startActivity(intent);
+	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
