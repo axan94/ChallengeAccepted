@@ -22,7 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name="services.ScheduleService" />
+        <service android:name="services.NotifyService" />
     </application>
 
 </manifest>
-
