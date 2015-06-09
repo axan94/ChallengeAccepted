@@ -49,6 +49,6 @@ public class WorkoutPlan {
 	
 	@Override
 	public String toString() {
-		return "WorkoutPlan: name=" + name;
+		return ""+ name;
 	}
 }

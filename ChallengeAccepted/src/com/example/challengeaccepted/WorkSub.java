@@ -6,7 +6,9 @@ import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import database.DatabaseHandler;
 import database.Workout;
 
@@ -22,9 +24,12 @@ public class WorkSub extends ListActivity {
 
 		Bundle extras = getIntent().getExtras();
 		id = (Integer) extras.get("workoutplan");
-		
 		datasource = new DatabaseHandler(this);
 
+		TextView tv = (TextView) findViewById(R.id.textView1);
+		tv.setText(datasource.getWorkoutPlan(id).getName());
+		
+		
 		values = datasource.getAllWorkouts(id);
 		// use the SimpleCursorAdapter to show the
 		// elements in a ListView

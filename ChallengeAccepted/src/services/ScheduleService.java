@@ -8,7 +8,11 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-
+/**
+ * 
+ * @author Martin Some changes to use in my app
+ *
+ */
 public class ScheduleService extends Service {
 
 	/**

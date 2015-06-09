@@ -17,6 +17,7 @@ import android.content.Intent;
  * This will run on it's own thread.
  * 
  * @author paul.blundell
+ * @author Martin Some changes to use in my app
  */
 public class AlarmTask implements Runnable{
 	// The date selected for the alarm

@@ -61,6 +61,7 @@ public class Workout {
 
 	@Override
 	public String toString() {
-		return "Workout: task=" + task+ ", repeats=" + repeats + ", sets=" + sets;
+		System.out.println(task+ ":" + "\nRepeats: " + repeats + " Sets: " + sets);
+		return task+ ":" + "\nRepeats: " + repeats + " Sets: " + sets;
 	}
 }

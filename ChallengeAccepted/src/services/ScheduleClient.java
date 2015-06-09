@@ -13,6 +13,7 @@ import android.os.IBinder;
  * service and any activity that wants to connect to the service
  * 
  * @author paul.blundell
+ * @author Martin Some changes to use in my app
  */
 public class ScheduleClient {
 

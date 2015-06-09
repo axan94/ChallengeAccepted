@@ -43,7 +43,7 @@ public class NewChallenge extends Activity {
 	}
 
 	public void addToList() {
-		Workout w = new Workout(Integer.parseInt(txt3.getText().toString()),
+		Workout w = new Workout(Integer.parseInt(txt2.getText().toString()),
 				txt1.getText().toString(), Integer.parseInt(txt3.getText()
 						.toString()));
 		list.add(w);

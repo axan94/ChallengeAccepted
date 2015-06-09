@@ -141,7 +141,6 @@ public class SaveChallenge extends ListActivity {
      */
     public void startingService(int hours, int minute){
     	Calendar c = Calendar.getInstance();
-    	c.set(2015, 5, 8);
     	c.set(Calendar.HOUR_OF_DAY, hours);
     	c.set(Calendar.MINUTE, minute);
     	c.set(Calendar.SECOND, 0);
